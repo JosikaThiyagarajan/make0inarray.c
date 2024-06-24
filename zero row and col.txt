@@ -1,0 +1,40 @@
+#include <stdio.h>
+int main() {
+    int i, j, a[10][10], n, rows[10] = {0}, col[10] = {0}; // Initialize rows and col arrays
+
+    // Input array size
+    printf("Enter array size:\n");
+    scanf("%d", &n);
+
+    // Get input
+    printf("Enter elements of the array:\n");
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            scanf("%d", &a[i][j]);
+            if (a[i][j] == 0) {
+                rows[i] = 1; // Mark row i to be zeroed
+                col[j] = 1; // Mark column j to be zeroed
+            }
+        }
+    }
+
+    // Modify the array based on marked rows and columns
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            if (rows[i] == 1 || col[j] == 1) {
+                a[i][j] = 0; // Set element to zero if its row or column was marked
+            }
+        }
+    }
+
+    // Output the modified array
+    printf("Modified array:\n");
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
